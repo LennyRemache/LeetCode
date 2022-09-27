@@ -6,8 +6,26 @@
 const isAnagram = (s, t) => {
     if (s.length !== t.length) return false;
     
-    const sSorted = s.split('').sort().join('');
-    const tSorted = t.split('').sort().join('');
+    const sFreq = {};
+    const tFreq = {};
     
-    return sSorted === tSorted;
+    for(let i = 0; i < s.length; i++) {
+        if (!sFreq[s[i]]) {
+            sFreq[s[i]] = 1;
+        } else {
+           sFreq[s[i]] += 1; 
+        }
+        
+        if (!tFreq[t[i]]) {
+            tFreq[t[i]] = 1;
+        } else {
+           tFreq[t[i]] += 1; 
+        }
+    }
+    
+    for (let char in sFreq) {
+        if (sFreq[char] !== tFreq[char]) return false
+    }
+    
+    return true;
 };
