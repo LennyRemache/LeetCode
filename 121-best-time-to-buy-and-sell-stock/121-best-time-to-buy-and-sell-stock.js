@@ -14,7 +14,8 @@ const maxProfit = (prices) => {
             let profit = prices[i] - boughtPrice; // calculate profit thaat can be made
             // this if condition's instructions only executes when the new profit calculation is 
             // greater than a previous maxProfit calculation
-            if (profit > maxProfit) { // if profit is greater than maxProfit from calculation                                      // of other pairs of bought price and curr day price
+            if (profit > maxProfit) { // if profit is greater than maxProfit from calculation 
+                                      // of other pairs of bought price and curr day price
                 maxProfit = profit;
             }
         }
