@@ -7,12 +7,10 @@ const isPalindrome = (s) => {
     
     for (let i = 0; i < s.length; i++) {
         const asciiVal = s.charCodeAt(i)
-        if (48 <= asciiVal && asciiVal <= 57) { // if char is a number ascii value char
-            newString += s[i]
+        if ((48 <= asciiVal && asciiVal <= 57) || (97 <= asciiVal && asciiVal <= 122)) { // if char is a number ascii value 
+            newString += s[i];                                                           // char or lowercase letter
         } else if (65 <= asciiVal && asciiVal <= 90) { // if uppercase letter
             newString += String.fromCharCode(asciiVal + 32)
-        } else if (97 <= asciiVal && asciiVal <= 122) { // if lowercase lette
-            newString += s[i]
         } // if not alphanumeric char is skipped and not added to newString
     }
     
