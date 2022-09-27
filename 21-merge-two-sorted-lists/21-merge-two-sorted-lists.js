@@ -16,10 +16,10 @@ const mergeTwoLists = (list1, list2) => {
     
     while(list1 && list2) {
         if (list1.val <= list2.val) {
-            mergedList.next = new ListNode(list1.val);
+            mergedList.next = list1;
             list1 = list1.next;
         } else {
-            mergedList.next = new ListNode(list2.val);
+            mergedList.next = list2;
             list2 = list2.next;
         }
         mergedList = mergedList.next;
