@@ -4,6 +4,7 @@
  */
 const isPalindrome = (s) => {
     let newString = "";
+    
     for (let i = 0; i < s.length; i++) {
         const asciiVal = s.charCodeAt(i)
         if (48 <= asciiVal && asciiVal <= 57) { // if char is a number ascii value char
