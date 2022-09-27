@@ -11,8 +11,8 @@
  * @return {TreeNode}
  */
 const invertTree = (root) => {
-    if (root === null || (!root.left && !root.right)) { // if reach max depth node with no children || handle case of
-        return root;                                    // empty binary tree
+    if (root === null || (!root.left && !root.right)) { // handle if empty binary tree ||
+        return root;                                    // max depth node reached
     }
     let leftNode = invertTree(root.left);
     let rightNode = invertTree(root.right);
