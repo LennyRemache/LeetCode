@@ -12,20 +12,18 @@ const floodFill = (image, sr, sc, color) => { // color: number to replace with, 
     const startColor = image[sr][sc];
     
     let fill = (image, sr, sc, startColor, color) => {
-        if (sr < 0 || sr > image.length - 1 || sc < 0 || sc > image[0].length - 1) {    // if index out of bounds
+        if (sr < 0 || sr > image.length - 1 || sc < 0 || sc > image[0].length - 1 || image[sr][sc] !== startColor) {    // if index out of bounds
             return;
-        } else if(image[sr][sc] === startColor) {
-            image[sr][sc] = color;
-            // up
-            fill(image, sr - 1, sc, startColor, color)
-            // down
-            fill(image, sr + 1, sc, startColor, color)
-            // left
-            fill(image, sr, sc - 1, startColor, color)
-            // right
-            fill(image, sr, sc + 1, startColor, color)
-        }
-            
+        } 
+        image[sr][sc] = color;
+        // up
+        fill(image, sr - 1, sc, startColor, color)
+        // down
+        fill(image, sr + 1, sc, startColor, color)
+        // left
+        fill(image, sr, sc - 1, startColor, color)
+        // right
+        fill(image, sr, sc + 1, startColor, color)
     }
     
     fill(image, sr, sc, startColor, color);
