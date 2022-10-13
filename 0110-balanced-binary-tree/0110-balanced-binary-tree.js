@@ -13,18 +13,18 @@
 var isBalanced = function(root) {
     let res = true;
     
-    let traverse = (node) => {
+    let maxDepth = (node) => {
         if (!node) return 0;
         
-        let left = traverse(node.left);
-        let right = traverse(node.right);
+        let left = maxDepth(node.left);
+        let right = maxDepth(node.right);
         
         if (Math.abs(left- right) > 1) res = false;
         
         return 1 + Math.max(left, right);
     }
     
-    traverse(root)
+    maxDepth(root)
    
     return res;
 };
