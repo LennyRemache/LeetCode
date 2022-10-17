@@ -20,7 +20,7 @@ var canConstruct = function(ransomNote, magazine) {
     }
     
     for (let letter in magFreq) {
-        if(magFreq[letter] < 0) return false
+        if(magFreq[letter] < 0) return false;
     }
     
     return true;
