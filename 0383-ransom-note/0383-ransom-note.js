@@ -15,12 +15,8 @@ var canConstruct = function(ransomNote, magazine) {
     }
     
     for (let j = 0; j < ransomNote.length; j++) {
-        if (magFreq[ransomNote[j]] === undefined) return false;
+        if (magFreq[ransomNote[j]] === undefined || magFreq[ransomNote[j]] === 0) return false;
         magFreq[ransomNote[j]] -= 1;
-    }
-    
-    for (let letter in magFreq) {
-        if(magFreq[letter] < 0) return false;
     }
     
     return true;
