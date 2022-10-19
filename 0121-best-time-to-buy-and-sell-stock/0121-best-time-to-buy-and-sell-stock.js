@@ -9,7 +9,7 @@ const maxProfit = (prices) => {
     
     for (let price of prices) {
         if (price < buyPrice) buyPrice = price;
-        if (price - buyPrice > maxProfit) maxProfit = price - buyPrice;
+        else if (price - buyPrice > maxProfit) maxProfit = price - buyPrice;
     }
     
     return maxProfit;
