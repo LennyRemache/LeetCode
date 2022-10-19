@@ -32,7 +32,7 @@ const mergeTwoLists = (list1, list2) => {
         
     }
     
-    if (list1 !== null) {
+    if (list1) {
         res.next = list1;
     }
     if (list2) {
