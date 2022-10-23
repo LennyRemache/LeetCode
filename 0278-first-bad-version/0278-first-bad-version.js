@@ -20,7 +20,7 @@ const solution = (isBadVersion) => {
     return function(n) {
         let start = 1;
         let end = n;
-        while(start <= end) {
+        while(true) {
             const mid = Math.floor((start + end) / 2);
             if (!isBadVersion(mid)) {
                 start = mid + 1;
