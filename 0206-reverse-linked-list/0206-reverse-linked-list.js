@@ -10,24 +10,25 @@
  * @return {ListNode}
  */
 const reverseList = (head) => {
-    let node = head;
-    let prev = head;
     
-    while (node) {
-        let next = node.next;
+    let currNode = head;
+    let prevNode = head;
+    
+    while (currNode) {
+        let next = currNode.next;
         
-        if(node === head) {
-            node.next = null;
+        if(currNode === head) {
+            currNode.next = null;
         }
         else if(next === null) { // reached a tail node
-            node.next = prev
-            return node;
+            currNode.next = prevNode
+            return currNode;
         } else {
-            node.next = prev;
+            currNode.next = prevNode;
         }
             
-        prev = node;
-        node = next;
+        prevNode = currNode;
+        currNode = next;
     }
     
     return head;
