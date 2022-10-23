@@ -12,24 +12,15 @@
 const reverseList = (head) => {
     
     let currNode = head; // pointers when using linked list
-    let prevNode;
+    let prevNode = null;
+    let nextNode = null;
     
-    while (currNode) {
-        let next = currNode.next;
-        
-        if(currNode === head) {
-            currNode.next = null;
-        }
-        else if(next === null) { // reached a tail node
-            currNode.next = prevNode
-            return currNode;
-        } else {
-            currNode.next = prevNode;
-        }
-            
+    while (currNode) {       
+        nextNode = currNode.next;
+        currNode.next = prevNode;
         prevNode = currNode;
-        currNode = next;
+        currNode = nextNode;
     }
     
-    return head;
+    return prevNode;
 };
