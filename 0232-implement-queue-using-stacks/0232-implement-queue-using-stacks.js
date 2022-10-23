@@ -10,20 +10,22 @@ class MyQueue {
     }
     
     pop() {
-        if (!this.popStack.length) {
+        if (this.popStack.length === 0) {
             while (this.pushStack.length) {
-                this.popStack.push(this.pushStack.pop())
+                this.popStack.push(this.pushStack.pop());
             }
-        } 
-        return this.popStack.pop()
+        }
+        
+        return this.popStack.pop();
     }
     
     peek() {
-        if (!this.popStack.length) {
+        if (this.popStack.length === 0) {
             while (this.pushStack.length) {
-                this.popStack.push(this.pushStack.pop())
+                this.popStack.push(this.pushStack.pop());
             }
-        } 
+        }
+        
         return this.popStack[this.popStack.length - 1];
     }
     
