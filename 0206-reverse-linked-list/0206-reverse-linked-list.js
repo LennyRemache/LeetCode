@@ -11,7 +11,7 @@
  */
 const reverseList = (head) => {
     
-    let currNode = head;
+    let currNode = head; // pointers when using linked list
     let prevNode;
     
     while (currNode) {
