@@ -12,7 +12,7 @@
 const reverseList = (head) => {
     
     let currNode = head;
-    let prevNode = head;
+    let prevNode;
     
     while (currNode) {
         let next = currNode.next;
