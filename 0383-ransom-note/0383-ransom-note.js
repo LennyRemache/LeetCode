@@ -3,7 +3,7 @@
  * @param {string} magazine
  * @return {boolean}
  */
-const canConstruct = function(ransomNote, magazine) {
+const canConstruct = (ransomNote, magazine) => {
     const letterFreq = {}
     
     for(let letter of magazine) {
