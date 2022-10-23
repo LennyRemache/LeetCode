@@ -21,7 +21,7 @@ const solution = (isBadVersion) => {
         let start = 0;
         let end = n;
         while(start <= end) {
-            const mid = Math.ceil((start + end) / 2);
+            const mid = Math.floor((start + end) / 2);
             if (!isBadVersion(mid)) {
                 start = mid + 1;
             } else if (isBadVersion(mid)){
