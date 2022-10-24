@@ -11,9 +11,8 @@
  * @return {number}
  */
 const maxDepth = (root) => {
-    //let max = 0;
     const getMaxDepth = (node) => {
-        if (!node) return 0;
+        if (node === null) return 0;
         
         const leftLength = getMaxDepth(node.left);
         const rightLength = getMaxDepth(node.right);
