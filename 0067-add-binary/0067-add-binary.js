@@ -35,5 +35,6 @@ const addBinary = (a, b) => {
     if (carryOver > 0) {
         res.unshift("1");
     }
+    
     return res.join("")
 };
