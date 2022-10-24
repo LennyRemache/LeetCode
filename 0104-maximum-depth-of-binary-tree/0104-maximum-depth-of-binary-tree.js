@@ -14,7 +14,7 @@ const maxDepth = (root) => {
     
     if (root === null) return 0;
 
-    const leftLength = maxDepth(root.left);
+    const leftLength = maxDepth(root.left); // DFS
     const rightLength = maxDepth(root.right);
 
     return Math.max(leftLength, rightLength) + 1;
