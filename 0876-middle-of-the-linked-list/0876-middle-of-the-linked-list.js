@@ -18,5 +18,5 @@ const middleNode = (head) => {
         fast = fast.next.next;
     }
     
-    return slow
+    return slow;
 };
