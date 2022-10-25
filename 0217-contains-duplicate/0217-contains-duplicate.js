@@ -3,11 +3,10 @@
  * @return {boolean}
  */
 const containsDuplicate = (nums) => {
-    const numFreq = {};
+    nums.sort((a,b) => a-b);
     
-    for (let num of nums) {
-        if (numFreq[num] === undefined) numFreq[num] = 1;
-        else return true;
+    for (let i = 0; i < nums.length - 1; i++) {
+        if (nums[i] === nums[i + 1]) return true;
     }
     
     return false;
