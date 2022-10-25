@@ -7,11 +7,7 @@ const containsDuplicate = (nums) => {
     
     for (let num of nums) {
         if (numFreq[num] === undefined) numFreq[num] = 1;
-        else numFreq[num] += 1;
-    }
-    
-    for (let num in numFreq) {
-        if (numFreq[num] > 1) return true;
+        else return true;
     }
     
     return false;
