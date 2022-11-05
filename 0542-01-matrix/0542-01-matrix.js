@@ -4,6 +4,7 @@
  */
 const updateMatrix = (mat) => {
     // BFS always paired with the usage of queues
+    // bfs prevents revisits of the same cells in the matrix
     let queue = [];
 
     // store all cells position that contain 0's and change all cells with 1's to -1 as a way to determine we reached a cell that needs its distance calculated
