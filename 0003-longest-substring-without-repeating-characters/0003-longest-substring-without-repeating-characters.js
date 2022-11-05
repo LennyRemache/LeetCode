@@ -5,7 +5,8 @@
 const lengthOfLongestSubstring = (s) => {
     let substring = new Map();
     
-    let start = 0; // used to keep track of letter indices that were removed. set to 0 because none were removed yet
+    let start = 0; // used to keep track of where our substring starts when removing chars from the Map
+                   // no chars removed so our substring starts at index 0. if a char is removed then our substring starts at index 1 etc.
     let maxLength = 0;
     
     for (let i = 0; i < s.length; i++) { // loop through entire string once
