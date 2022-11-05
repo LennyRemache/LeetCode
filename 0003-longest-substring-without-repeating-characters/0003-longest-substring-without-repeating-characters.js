@@ -4,8 +4,7 @@
  */
 const lengthOfLongestSubstring = (s) => {
     
-    if (s.length === 0) return 0;
-    if (s.length === 1) return 1;
+
     
     let window = new Map();
     
