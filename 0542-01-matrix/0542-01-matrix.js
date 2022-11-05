@@ -3,43 +3,46 @@
  * @return {number[][]}
  */
 const updateMatrix = (mat) => {
+    // BFS always paired with the usage of queues
+    let queue = [];
 
-    let q = [];
-
+    // store all cells position that contain 0's and change all cells with 1's to -1 as a way to determine we reached a cell that needs its distance calculated
     for (let i = 0; i < mat.length; i++) {
         for (let j = 0; j < mat[0].length; j++) {
-            if (mat[i][j] === 0 ) {
-                q.push([i, j, 0]);
-            } else {
-                mat[i][j] = Infinity;
-            }
+            // push into queue the row and col position and lastly a 0 to help calculate distances to nearest 0 when modified when trraversing the matrix/graph
+            if (mat[i][j] === 0) queue.push([i,j, 0]);
+            else mat[i][j] = -1;
         }
     }
 
-    let dir = [[1,0],[0,1],[-1,0],[0,-1]];
+    // helper array to serve as our traversals in different directions at current cell in queue
+    const dir = [[1,0], [-1,0], [0,-1], [0,1]]; // up, down, left, right
 
-    while(q.length) {
-        let pos = q.shift();
-
-        let row = pos[0];
-        let col = pos[1];
-        let level = pos[2];
-
-        if (mat[row][col] > level) {
-            mat[row][col] = level;
+    // BFS as long as we have cell information stored in queue
+    while (queue.length) { 
+        const pos = queue.shift(); // remove first cell info from queue
+        const row = pos[0]; // index 0 contains row value
+        const col = pos[1]; // index 1 contains col value
+        const distance = pos[2]; // index 2 contains distance value currently to reach the closest 0;
+        // ex: if curr cell from queue is 0 the distance is 0
+        
+        // if the dequeued cell is -1 then we can modify its value in the matrix to whatever the distance to the closest 0 is
+        if (mat[row][col] === -1) {
+            mat[row][col] = distance;
         }
 
-        dir.forEach(function(d) {
-            let next = [row + d[0], col + d[1], level + 1];
-            // valid next coordinates?
-            if (next[0] > -1 && next[0] < mat.length && next[1] > -1 && next[1] < mat[0].length) {
-                // not yet marked?
-                if (mat[next[0]][next[1]] === Infinity) {
-                    // add to q, but with increased index, which we stored at pos[2]
-                    q.push(next);
+        // helper function to traverse in all 4 directions of curr cell that was dequeued from the queue
+        dir.forEach((d) => {
+            const newRow = row + d[0];
+            const newCol = col + d[1];
+            
+            // if a valid matrix position, meaning no new indices are out of bounds
+            if (newRow >= 0 && newRow <= mat.length - 1 && newCol >= 0 && newCol <= mat[0].length - 1) {
+                if (mat[newRow][newCol] === -1) { // if we traverse to a new cell with -1 then we enqueue new cell info and also curr cell's distance value + 1
+                    queue.push([newRow, newCol, distance + 1]);
                 }
             }
-        });
+        })
     }
 
     return mat;
