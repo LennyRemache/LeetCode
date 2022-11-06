@@ -24,7 +24,7 @@ const threeSum = (nums) => {
                     left++;
                 }
                 while (left < right && nums[right] === nums[right+1]) {
-                       right--;
+                    right--;
                 }
             } else if (nums[left] + nums[right] > target) {
                 right--;
