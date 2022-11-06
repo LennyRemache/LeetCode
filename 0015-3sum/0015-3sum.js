@@ -18,7 +18,8 @@ const threeSum = (nums) => {
             if (nums[left] + nums[right] === target) {
                 solution.push([nums[i], nums[left], nums[right]]);
                 left++;
-                right--;     
+                right--;
+                // while loops to handle duplicates
                 while (left < right && nums[left] === nums[left-1]) {
                     left++;
                 }
