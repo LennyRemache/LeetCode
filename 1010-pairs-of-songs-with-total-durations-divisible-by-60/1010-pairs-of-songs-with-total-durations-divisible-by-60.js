@@ -6,13 +6,10 @@ const numPairsDivisibleBy60 = (time) => {
     let remainderFreq = new Array(60).fill(0);
     let totalValidPairs = 0;
     
-    for (let num of time) {
-        if (num % 60 === 0){
-            totalValidPairs += remainderFreq[0];
-        } else {
-            totalValidPairs += remainderFreq[60 - (num%60)]   
+    for (let i = 0; i < time.length; i++) {
+        for (let j = i+1; j < time.length; j++) {
+            totalValidPairs += (time[i] + time[j]) % 60 === 0 ? 1 : 0;
         }
-        remainderFreq[num % 60] += 1;
     }
     return totalValidPairs;
-};
+}
