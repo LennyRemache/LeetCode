@@ -14,7 +14,3 @@ const numPairsDivisibleBy60 = (time) => {
     }
     return pairs;
 }
-
-const sumOfN = (n) => {
-    return n*(n+1)/2;
-}
