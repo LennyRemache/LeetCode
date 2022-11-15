@@ -8,15 +8,10 @@ const numPairsDivisibleBy60 = (time) => {
     
     for(let num of time) {
         const remainder = (num % 60)
-        if (remainder === 0) {
-            pairs += remainderFreq[0];
-        } else {
-            pairs += remainderFreq[60 - remainder]
-        }
+        if (remainder === 0) pairs += remainderFreq[0];
+        else pairs += remainderFreq[60 - remainder]
         remainderFreq[remainder] += 1;
-        
     }
-    
     return pairs;
 }
 
