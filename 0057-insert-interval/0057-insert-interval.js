@@ -13,6 +13,7 @@ const insert = (intervals, newInterval) => {
     
     // while there is no intersection between current interval and the new interval
     // and while we have not reached a point where newIterval values can be inserted correctly
+    // and while we have not reach an interval greater than newInterval without intersection if applicable
     while (i < intervals.length && !(intervals[i][end] >= newInterval[start])) {
         res.push(intervals[i]);
         i++;
@@ -30,7 +31,7 @@ const insert = (intervals, newInterval) => {
     }
     
     res.push(newInterval); // before pushing the rest of the non intersecting intervals
-                           // push the merged interval
+                           // push the merged interval if merged, otherwise just the original newInterval
     
     while (i < intervals.length) {
         res.push(intervals[i]);
