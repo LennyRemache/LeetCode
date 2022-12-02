@@ -3,38 +3,32 @@
  * @return {number[][]}
  */
 const threeSum = (nums) => {
-    let [solution, left, right] = [[], 0, nums.length-1];
-
     nums.sort((a,b) => a-b);
+    
+    let triplets = [];
     
     for (let i = 0; i < nums.length; i++) {
         if(nums[i] === nums[i-1]) continue;
         
-        let target = nums[i] * -1;
-        left = i + 1; 
-        right = nums.length - 1;
+        let subTarget = nums[i] * -1;
+        let left = i + 1;
+        let right = nums.length - 1;
         
         while (left < right) {
-            if (nums[left] + nums[right] === target) {
-                solution.push([nums[i], nums[left], nums[right]]);
+            if (nums[left] + nums[right] === subTarget) {
+                triplets.push([nums[i],nums[left], nums[right]]);
                 left++;
                 right--;
-                // while loops to handle duplicates
-                while (left < right && nums[left] === nums[left-1]) {
-                    left++;
-                }
-                while (left < right && nums[right] === nums[right+1]) {
-                    right--;
-                }
-            } else if (nums[left] + nums[right] > target) {
-                right--;
-            } else if (nums[left] + nums[right] < target) {
+                while (left < right && nums[left-1] === nums[left]) left++;
+                while (left < right && nums[right+1] === nums[right]) right--;
+            } else if (nums[left] + nums[right] < subTarget) {
                 left++;
+            } else if (nums[left] + nums[right] > subTarget) {
+                right--;
             }
-            
         }
+    }
         
-    }     
     
-    return solution;
+    return triplets;
 };
