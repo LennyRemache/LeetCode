@@ -4,17 +4,20 @@
  */
 const isValid = (s) => {
     const brackets = {
-        ")": "(",
-        "}": "{",
-        "]": "["
+       "(" : ")",
+       "{": "}",
+       "[": "]"
     }
-    
-    let openBrackets = []
+
+    let stack = [];
     
     for (let bracket of s) {
-        if (brackets[bracket] === undefined) openBrackets.push(bracket);
-        else if (openBrackets.pop() !== brackets[bracket]) return false;
+        if (brackets[bracket] !== undefined) {
+            stack.push(bracket);
+        } else if (brackets[stack.pop()] !== bracket) {
+            return false;
+        }
     }
     
-    return openBrackets.length === 0;
+    return stack.length === 0;
 };
