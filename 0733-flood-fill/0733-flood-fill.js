@@ -6,22 +6,23 @@
  * @return {number[][]}
  */
 const floodFill = (image, sr, sc, color) => {
-    if (image[sr][sc] === color) return image;
+    let startColor = image[sr][sc];
     
-    const startColor = image[sr][sc];
+    if (startColor === color) return image;
     
     const fill = (row, col) => {
-        if (row > image.length - 1 || row < 0 || col > image[0].length - 1 || col < 0 || image[row][col] !== startColor) return;
+        if (row < 0 || row >= image.length || col < 0 || col >= image[0].length || image[row][col] !== startColor) return;
         
         image[row][col] = color;
         
-        fill(row-1, col) // up
-        fill(row+1, col) // down
-        fill(row, col-1) // left
-        fill(row, col+1) // right
+        fill(row+1, col); // up
+        fill(row-1,col);  // down
+        fill(row, col+1); // right
+        fill(row, col-1); // left
+
     }
     
-    fill(sr, sc);
+    fill(sr,sc);
     
-    return image
+    return image;
 };
