@@ -11,26 +11,27 @@
  * @return {ListNode}
  */
 const mergeTwoLists = (list1, list2) => {
-    let res = new ListNode()
-    const head = res;
+    let mergedList = new ListNode();
+    let head = mergedList;
     
     while (list1 && list2) {
-        if (list1.val <= list2.val) {
-            res.next = list1;
-            list1 = list1.next
+        if (list1.val < list2.val) {
+            mergedList.next = list1;
+            list1 = list1.next;
         }
         else {
-            res.next = list2;
+            mergedList.next = list2
             list2 = list2.next;
         }
-        res = res.next;    
+        mergedList = mergedList.next;
     }
     
     if (list1) {
-        res.next = list1;
+        mergedList.next = list1;
     }
+    
     if (list2) {
-        res.next = list2;
+        mergedList.next = list2;
     }
     
     return head.next;
