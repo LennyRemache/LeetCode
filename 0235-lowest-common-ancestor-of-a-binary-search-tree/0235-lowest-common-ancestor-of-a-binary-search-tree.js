@@ -18,7 +18,7 @@ const lowestCommonAncestor = (root, p, q) => {
             return root;
         } else if (root.val > p.val && root.val > q.val) {
             root = root.left;
-        } else {
+        } else if (root.val < p.val && root.val < q.val){
             root = root.right;
         }
     }
