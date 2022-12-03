@@ -10,20 +10,20 @@
  * @param {TreeNode} root
  * @return {boolean}
  */
-const isBalanced = (root) => {
+const isBalanced = (root) => {    
     let balanced = true;
-    const getDepth = (node) => {
-        if (node === null) return 0;
-        
-        const leftHeight = getDepth(node.left)
-        const rightHeight = getDepth(node.right)
-        
-        if (Math.abs(leftHeight - rightHeight) > 1) balanced = false;
-        
-        return Math.max(leftHeight, rightHeight) + 1
-    }
-    
-    getDepth(root);
-    
-    return balanced;
+
+   const getDepth = (node) => {
+       if (!node) return 0;
+       
+       const leftHeight = getDepth(node.left);
+       const rightHeight = getDepth(node.right);
+       
+       if (Math.abs(leftHeight - rightHeight) > 1) balanced = false;
+       
+       return Math.max(leftHeight, rightHeight) + 1;
+   }
+   getDepth(root);
+   
+   return balanced;
 };
