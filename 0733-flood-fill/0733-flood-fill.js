@@ -8,10 +8,8 @@
 const floodFill = (image, sr, sc, color) => {
     let startColor = image[sr][sc];
     
-    if (startColor === color) return image;
-    
     const fill = (row, col) => {
-        if (row < 0 || row >= image.length || col < 0 || col >= image[0].length || image[row][col] !== startColor) return;
+        if (row < 0 || row >= image.length || col < 0 || col >= image[0].length || image[row][col] !== startColor || image[row][col] === color) return;
         
         image[row][col] = color;
         
