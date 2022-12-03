@@ -4,23 +4,20 @@
  * @return {boolean}
  */
 const isAnagram = (s, t) => {
+    let letterFreq = {};
     
-    if (s.length !== t.length) return false;
-    
-    const letterFreq = {}
-    
-    for (let i = 0; i < s.length; i++) {
-        if(letterFreq[s[i]] === undefined) letterFreq[s[i]] = 1;
-        else letterFreq[s[i]] += 1;
+    for (let letter of s) {
+        if (letterFreq[letter] === undefined) letterFreq[letter] = 1;
+        else letterFreq[letter] += 1;
     }
     
-    for (let j = 0; j < t.length; j++) {
-        if(letterFreq[t[j]] === undefined) return false;
-        else letterFreq[t[j]] -= 1;
+    for (let letter of t) {
+        if (letterFreq[letter] === undefined || letterFreq[letter] === 0) return false;
+        letterFreq[letter] -= 1;
     }
     
     for (let letter in letterFreq) {
-        if (letterFreq[letter] !== 0) return false;
+        if (letterFreq[letter] > 0) return false;
     }
     
     return true;
