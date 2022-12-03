@@ -11,6 +11,9 @@
  * @return {ListNode}
  */
 const mergeTwoLists = (list1, list2) => {
+    // T: O(n+m) because worst case list1 and list2 are of different sizes
+    // S: O(1) bc we are not creating new nodes
+    
     let mergedList = new ListNode();
     let head = mergedList;
     
