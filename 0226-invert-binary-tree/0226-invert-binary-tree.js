@@ -11,13 +11,14 @@
  * @return {TreeNode}
  */
 const invertTree = (root) => {
-    if (root === null) return root;
-    
-    const leftNode = invertTree(root.left);
-    const rightNode = invertTree(root.right);
-    
-    root.right = leftNode;
-    root.left = rightNode;
+    // T: O(n)  S: O(1)
+    if(root) {
+        const left = invertTree(root.left);
+        const right = invertTree(root.right);
+        
+        root.left = right;
+        root.right = left;
+    }
     
     return root;
 };
