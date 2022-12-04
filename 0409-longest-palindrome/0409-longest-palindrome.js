@@ -3,25 +3,23 @@
  * @return {number}
  */
 const longestPalindrome = (s) => {
-    if (s.length === 1) return 1;
+    let freq = {};
     
-    const letterFreq = {};
+    for (let letter of s) {
+        if (freq[letter] === undefined) freq[letter] = 1;
+        else freq[letter] += 1;
+    }
     
-    for(let letter of s) {
-        if(letterFreq[letter] === undefined) letterFreq[letter] = 1;
-        else letterFreq[letter] += 1;
-    } 
-    
-    let length = 0;
-    let oddFreq = false;
-    
-    for(let letter in letterFreq) {
-        if(letterFreq[letter] % 2 === 0) length += letterFreq[letter];
-        else {
-            length += letterFreq[letter] - 1;
-            oddFreq = true;
+    let res = 0;
+    let odd = false;
+    for (let letter in freq) {
+        if (freq[letter] % 2 === 0) {
+            res += freq[letter];
+        } else {
+            odd = true;
+            res += freq[letter] - 1;
         }
     }
     
-    return oddFreq === true ? length + 1 : length;
+    return odd ? res + 1 : res;
 };
