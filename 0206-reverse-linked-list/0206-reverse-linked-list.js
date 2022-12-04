@@ -10,17 +10,16 @@
  * @return {ListNode}
  */
 const reverseList = (head) => {
-    
-    let currNode = head; // pointers when using linked list
     let prevNode = null;
+    let currNode = head;
     let nextNode = null;
     
-    while (currNode) {       
-        nextNode = currNode.next;
-        currNode.next = prevNode;
-        prevNode = currNode;
-        currNode = nextNode;
+    while(currNode){
+        prevNode = currNode.next;
+        currNode.next = nextNode;
+        nextNode = currNode;
+        currNode = prevNode;
     }
     
-    return prevNode;
+    return nextNode;
 };
