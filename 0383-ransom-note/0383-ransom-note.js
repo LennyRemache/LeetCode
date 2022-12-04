@@ -3,17 +3,17 @@
  * @param {string} magazine
  * @return {boolean}
  */
-const canConstruct = (ransomNote, magazine) => {
-    const letterFreq = {}
+var canConstruct = function(ransomNote, magazine) {
+    let magFreq = {};
     
-    for(let letter of magazine) {
-        if (letterFreq[letter] === undefined) letterFreq[letter] = 1;
-        else letterFreq[letter] += 1;
+    for (let letter of magazine) {
+        if (magFreq[letter] === undefined) magFreq[letter] = 1;
+        else magFreq[letter] += 1;
     }
     
     for (let letter of ransomNote) {
-        if (letterFreq[letter] === undefined || letterFreq[letter] === 0) return false;
-        letterFreq[letter] -= 1;
+        if (magFreq[letter] === undefined || magFreq[letter] <= 0) return false;
+        magFreq[letter] -= 1;
     }
     
     return true;
