@@ -11,14 +11,14 @@
  * @return {boolean}
  */
 const hasCycle = (head) => {
-    let slow = head;
-    let fast = head;
+    let slowPointer = head;
+    let fastPointer = head;
     
-    while (fast && fast.next) {
-        slow = slow.next;
-        fast = fast.next.next;
-        if (slow === fast) return true;
+    while (fastPointer && fastPointer.next) {
+        slowPointer = slowPointer.next;
+        fastPointer = fastPointer.next.next;
+        if (slowPointer === fastPointer) return true;
     }
     
-    return false
+    return false;
 };
