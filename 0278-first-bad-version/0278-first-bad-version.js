@@ -18,7 +18,7 @@ const solution = (isBadVersion) => {
      * @return {integer} The first bad version
      */
     return function(n) {
-        let left = 0;
+        let left = 1;
         let right = n;
         
         while (left <= right) {
