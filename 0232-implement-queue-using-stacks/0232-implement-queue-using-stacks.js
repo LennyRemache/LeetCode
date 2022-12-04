@@ -5,13 +5,23 @@ class MyQueue {
         this.popStack = [];
     }
     
-    push(val) {
-        this.pushStack.push(val);
+    push(elem) {
+        this.pushStack.push(elem);
+    }
+    
+    peek() {
+        if (this.popStack.length === 0) {
+            while (this.pushStack.length > 0) {
+                this.popStack.push(this.pushStack.pop());
+            }
+        }
+        
+        return this.popStack[this.popStack.length-1];
     }
     
     pop() {
         if (this.popStack.length === 0) {
-            while (this.pushStack.length) {
+            while (this.pushStack.length > 0) {
                 this.popStack.push(this.pushStack.pop());
             }
         }
@@ -19,21 +29,10 @@ class MyQueue {
         return this.popStack.pop();
     }
     
-    peek() {
-        if (this.popStack.length === 0) {
-            while (this.pushStack.length) {
-                this.popStack.push(this.pushStack.pop());
-            }
-        }
-        
-        return this.popStack[this.popStack.length - 1];
-    }
-    
     empty() {
-        return !this.pushStack.length && !this.popStack.length;
+        return this.pushStack.length === 0 && this.popStack.length === 0
     }
 }
-
 /** 
  * Your MyQueue object will be instantiated and called as such:
  * var obj = new MyQueue()
