@@ -11,7 +11,6 @@ const addBinary = (a, b) => {
         const digitA = a[a.length - i - 1] ? a[a.length - i - 1] : 0;
         const digitB = b[b.length - i - 1] ? b[b.length - i - 1] : 0;
         
-        console.log(digitA, digitB)
         let sum = parseInt(digitA) + parseInt(digitB) + carryOver;
         if (sum === 2) {
             sum = 0;
