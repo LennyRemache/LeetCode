@@ -3,14 +3,12 @@
  * @return {number}
  */
 const majorityElement = (nums) => {
-    const numFreq = {};
+    let freq = {};
     
     for (let num of nums) {
-        if (numFreq[num] === undefined) numFreq[num] = 1;
-        else numFreq[num] += 1;
-    }
-    
-    for (let num in numFreq) {
-        if (numFreq[num] > nums.length / 2) return num;
+        if (freq[num] === undefined) freq[num] = 1;
+        else freq[num] += 1;
+        
+        if (freq[num] > nums.length / 2) return num;
     }
 };
