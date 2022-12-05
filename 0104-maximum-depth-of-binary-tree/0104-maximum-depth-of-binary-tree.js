@@ -20,7 +20,4 @@ const maxDepth = (root) => {
     let depth = Math.max(leftHeight, rightHeight);
 
     return depth + 1;
-    
-    
-    
 };
