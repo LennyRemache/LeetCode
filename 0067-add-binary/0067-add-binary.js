@@ -4,19 +4,15 @@
  * @return {string}
  */
 const addBinary = (a, b) => {
-    a = a.split("");
-    b = b.split("");
-    
+    let res = '';
     let carryOver = 0;
-    let maxLength = Math.max(a.length, b.length);
-    let res = new Array(maxLength).fill(0);
     
-    while (a.length !== maxLength) a.unshift(0);
-    while (b.length !== maxLength) b.unshift(0);
-    
-    while(maxLength > 0) {
-        let sum = parseInt(a[maxLength - 1]) + parseInt(b[maxLength - 1]) + carryOver;
+    for (let i = 0; i < Math.max(a.length, b.length); i++) {
+        const digitA = a[a.length - i - 1] ? a[a.length - i - 1] : 0;
+        const digitB = b[b.length - i - 1] ? b[b.length - i - 1] : 0;
         
+        console.log(digitA, digitB)
+        let sum = parseInt(digitA) + parseInt(digitB) + carryOver;
         if (sum === 2) {
             sum = 0;
             carryOver = 1;
@@ -27,14 +23,10 @@ const addBinary = (a, b) => {
             carryOver = 0;
         }
         
-        res[maxLength - 1] = sum.toString();
-        
-        maxLength -= 1;
+        res += sum.toString();
     }
     
-    if (carryOver > 0) {
-        res.unshift("1");
-    }
+    if (carryOver === 1) res += "1";
     
-    return res.join("")
+    return res.split("").reverse().join("");
 };
