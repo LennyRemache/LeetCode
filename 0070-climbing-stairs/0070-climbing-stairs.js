@@ -3,6 +3,8 @@
  * @return {number}
  */
 const climbStairs = (n) => {
+    // T: O(n)  S: O(n)
+    
     let memo = [1,1,2];
     
     for (i = 3; i <= n; i++) {
