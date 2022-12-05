@@ -11,7 +11,7 @@
  * @return {number}
  */
 const maxDepth = (root) => {
-
+    // T: O(n)  S: O(1)
     if (!root) return 0;
 
     const leftHeight = maxDepth(root.left);
