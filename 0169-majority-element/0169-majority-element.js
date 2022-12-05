@@ -3,6 +3,7 @@
  * @return {number}
  */
 const majorityElement = (nums) => {
+    // T: O(n) S: O(n)
     let freq = {};
     
     for (let num of nums) {
