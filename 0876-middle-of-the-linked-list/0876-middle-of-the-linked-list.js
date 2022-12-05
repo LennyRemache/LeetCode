@@ -10,13 +10,13 @@
  * @return {ListNode}
  */
 const middleNode = (head) => {
-    let slow = head;
-    let fast = head;
+    let slowPointer = head;
+    let fastPointer = head;
     
-    while(fast && fast.next) {
-        slow = slow.next;
-        fast = fast.next.next;
+    while (fastPointer && fastPointer.next) {
+        slowPointer = slowPointer.next;
+        fastPointer = fastPointer.next.next;
     }
     
-    return slow;
+    return slowPointer;
 };
