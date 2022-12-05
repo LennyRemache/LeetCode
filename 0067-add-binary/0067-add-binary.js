@@ -4,9 +4,9 @@
  * @return {string}
  */
 const addBinary = (a, b) => {
-    // T: O(n) where n represents the binary number with the max length
+    // T: 
     // S: O(n) where m represents the length of the summed binary number string
-    let res = [];
+    let res = []; // better to use stack over a string
     let carryOver = 0;
     
     // loop the length of the max length binary number
@@ -26,7 +26,9 @@ const addBinary = (a, b) => {
             carryOver = 0;
         }
         
-        res.push(`${sum}`);
+        res.push(`${sum}`); // better than doing res += sum.toString() bc then we would have quadratic run time since strings are
+                            // immutable and would require a new full copy of prev res when doing res += sum.toString()
+                            // pushing to a stack is constant time and then join the stack one time at the end
     }
     
     if (carryOver === 1) res.push('1');
