@@ -11,12 +11,16 @@
  * @return {number}
  */
 const maxDepth = (root) => {
+
+    if (!root) return 0;
+
+    const leftHeight = maxDepth(root.left);
+    const rightHeight = maxDepth(root.right);
+
+    let depth = Math.max(leftHeight, rightHeight);
+
+    return depth + 1;
     
-    if (root === null) return 0;
-
-    const leftLength = maxDepth(root.left); // DFS
-    const rightLength = maxDepth(root.right);
-
-    return Math.max(leftLength, rightLength) + 1;
-
+    
+    
 };
