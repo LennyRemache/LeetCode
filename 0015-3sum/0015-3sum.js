@@ -17,13 +17,13 @@ const threeSum = (nums) => {
         if(nums[i] === nums[i-1]) continue;
         
         // 
-        let subTarget = nums[i] * -1;
+        //let subTarget = nums[i] * -1;
         
         let left = i+1;              // j
         let right = nums.length - 1; // k
         
         while (left < right) {
-            if (nums[left] + nums[right] === subTarget) {
+            if (nums[i] + nums[left] + nums[right] === 0) {
                 triplets.push([nums[i], nums[left], nums[right]]);
                 // increment left and decrement right in order to prevent duplicates
                 left++;
@@ -37,11 +37,11 @@ const threeSum = (nums) => {
                 // if nums[right] = nums[right+1], we do not have to find nums[right]'s triplets again.
                 while(left < right && nums[right] === nums[right+1]) right--;
                 
-            } else if (nums[left] + nums[right] < subTarget) {
+            } else if (nums[i] + nums[left] + nums[right] < 0) {
                 // bc nums is sorted, increasing left pointer increases the sum by getting a larger number 
                 // on the left side so we get closer to subTarget
                 left++;
-            } else if (nums[left] + nums[right] > subTarget) {
+            } else if (nums[i] + nums[left] + nums[right] > 0) {
                 // bc nums is sorted, decreasing right pointer decreases the sum by getting a smaller number 
                 // on the right side so we get closer to subTarget
                 right--;
