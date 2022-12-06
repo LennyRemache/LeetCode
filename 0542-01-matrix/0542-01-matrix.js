@@ -45,8 +45,8 @@ const updateMatrix = (mat) => {
             // if a valid matrix position, meaning no new indices are out of bounds
             if (newRow >= 0 && newRow <= mat.length - 1 && newCol >= 0 && newCol <= mat[0].length - 1) {
                 if (mat[newRow][newCol] === -1) { // if we traverse to a new cell with -1 then we enqueue new cell info and also curr cell's distance value + 1       
-                    mat[newRow][newCol] = 1 + mat[row][col];
-                    queue.push([newRow, newCol]);
+                    mat[newRow][newCol] = 1 + mat[row][col]; // we can also modify its distance to 0 based on the prev cells "distance to a 0" + 1
+                    queue.push([newRow, newCol]); 
                 }
             }
         })
