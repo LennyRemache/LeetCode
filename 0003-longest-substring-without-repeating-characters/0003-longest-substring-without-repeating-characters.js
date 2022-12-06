@@ -3,7 +3,8 @@
  * @return {number}
  */
 const lengthOfLongestSubstring = (s) => {
-     // T: O(2n) -> O(n)  S: O(n)
+     // T: O(n)  
+    // S: O(1) bc s consists of English letters, digits, symbols and spaces. so fixed number of characters available that can be stored in the Map()
     let appeared = new Map();
     
     // substrings must be continous with no repeating characters
@@ -18,7 +19,7 @@ const lengthOfLongestSubstring = (s) => {
         
         // if the current end char appeared previously in the current substring
         // then we must remove the start of the substring until we no longer have a repeated char
-        while (appeared.has(endChar)) {
+        while (appeared.has(endChar)) { // O(1) lookup so this loop does not have impact on overall time complexity
             appeared.delete(s[start]);
             start++;
         }
