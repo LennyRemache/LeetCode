@@ -24,13 +24,10 @@ const updateMatrix = (mat) => {
         const pos = queue.shift(); // remove first cell info from queue
         const row = pos[0]; // index 0 contains row value
         const col = pos[1]; // index 1 contains col value
-        const distance = pos[2]; // index 2 contains distance value currently to reach the closest 0;
+        //const distance = pos[2]; // index 2 contains distance value currently to reach the closest 0;
         // ex: if curr cell from queue is 0 the distance is 0
         
-        // if the dequeued cell is -1 then we can modify its value in the matrix to whatever the distance to the closest 0 is
-        if (mat[row][col] === -1) {
-            mat[row][col] = distance;
-        }
+       
 
         // helper function to traverse in all 4 directions of curr cell that was dequeued from the queue
         dir.forEach((d) => {
@@ -39,8 +36,9 @@ const updateMatrix = (mat) => {
             
             // if a valid matrix position, meaning no new indices are out of bounds
             if (newRow >= 0 && newRow <= mat.length - 1 && newCol >= 0 && newCol <= mat[0].length - 1) {
-                if (mat[newRow][newCol] === -1) { // if we traverse to a new cell with -1 then we enqueue new cell info and also curr cell's distance value + 1
-                    queue.push([newRow, newCol, distance + 1]);
+                if (mat[newRow][newCol] === -1) { // if we traverse to a new cell with -1 then we enqueue new cell info and also curr cell's distance value + 1       
+                    mat[newRow][newCol] = 1 + mat[row][col];
+                    queue.push([newRow, newCol]);
                 }
             }
         })
