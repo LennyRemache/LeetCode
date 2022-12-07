@@ -11,11 +11,7 @@
  * @return {number[][]}
  */
 const levelOrder = (root) => {
-    // T: O(n) traversing all nodes one time in the tree even though we have 2 loops
-    // S: O(n) relative to the size of the input
-    
     if(!root) return [];
-    
     let res = [];
     let queue = [root];
     
@@ -23,12 +19,13 @@ const levelOrder = (root) => {
         let level = [];
         let qLen = queue.length;
         while (qLen > 0) {
-            let node = queue.shift();
-            level.push(node.val);
-            if (node.left) queue.push(node.left);
-            if (node.right) queue.push(node.right);
+            if (queue[0].left) queue.push(queue[0].left);
+            if (queue[0].right) queue.push(queue[0].right);
+            level.push(queue[0].val);
+            queue.shift();
             qLen--;
         }
+        
         res.push(level);
     }
     
