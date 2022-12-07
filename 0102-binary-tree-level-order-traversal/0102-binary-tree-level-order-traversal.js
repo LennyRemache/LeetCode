@@ -17,14 +17,16 @@ const levelOrder = (root) => {
     let queue = [root];
     
     while(queue.length > 0) {
-        res.push(queue.map(node => node.val));
+        let level = [];
         let qLen = queue.length;
         while (qLen > 0) {
             let node = queue.shift();
+            level.push(node.val);
             if (node.left) queue.push(node.left);
             if (node.right) queue.push(node.right);
             qLen--;
         }
+        res.push(level);
     }
     
     return res;
