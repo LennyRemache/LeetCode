@@ -6,11 +6,12 @@ const evalRPN = (tokens) => {
     // T: O(n) loop through tokens once
     // S: O(n) relative to the input  
     
+    // objects can have have keys mapped to a function
     const validOps = {
         "+": (num1, num2) => num1 + num2,
         "-": (num1, num2) => num1 - num2,
         "*": (num1, num2) => num1 * num2,
-        "/": (num1, num2) => Math.trunc(num1 / num2)
+        "/": (num1, num2) => Math.trunc(num1 / num2) // note from description says division should always truncate to 0
     }
     
     let numStack = [];
