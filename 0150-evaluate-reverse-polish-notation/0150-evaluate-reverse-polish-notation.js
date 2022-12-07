@@ -27,5 +27,5 @@ const evalRPN = (tokens) => {
         }
     }
     
-    return numStack[0];
+    return numStack.pop();
 };
