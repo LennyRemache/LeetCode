@@ -13,7 +13,7 @@ const evalRPN = (tokens) => {
     let numStack = [];
     
     for(let token of tokens) {
-        console.log(numStack)
+        //console.log(numStack)
         if (validOps[token] === undefined) {
             numStack.push(parseInt(token));
         } else {
