@@ -11,12 +11,11 @@
  * @return {Node}
  */
 const cloneGraph = (node) => {
-    
+    // used to check if we already made a clone of the visiting node
     let visited = {};
-    
+    if(!node) return node;
     const clone = (node) => {
         // base cases
-        if(!node) return node;
         if (visited[node.val] !== undefined) {
             return visited[node.val];
         }
