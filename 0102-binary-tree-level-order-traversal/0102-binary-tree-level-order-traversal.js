@@ -11,6 +11,9 @@
  * @return {number[][]}
  */
 const levelOrder = (root) => {
+    // T: O(n) traversing all nodes one time in the tree even though we have 2 loops
+    // S: O(n) relative to the size of the input
+    
     if(!root) return [];
     
     let res = [];
