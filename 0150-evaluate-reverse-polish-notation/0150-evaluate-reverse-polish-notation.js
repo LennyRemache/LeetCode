@@ -3,37 +3,28 @@
  * @return {number}
  */
 const evalRPN = (tokens) => {
+    // T: O(n) loop through tokens once
+    // S: O(n) relative to the input  
+    
     const validOps = {
-        "+": true,
-        "-": true,
-        "*": true,
-        "/": true
+        "+": (num1, num2) => num1 + num2,
+        "-": (num1, num2) => num1 - num2,
+        "*": (num1, num2) => num1 * num2,
+        "/": (num1, num2) => Math.trunc(num1 / num2)
     }
     
     let numStack = [];
     
     for(let token of tokens) {
-        //console.log(numStack)
+        // if token is a number, push it into the numStack
         if (validOps[token] === undefined) {
             numStack.push(parseInt(token));
-        } else {
-            num2 = numStack.pop();
-            num1 = numStack.pop();
-            if (token === "+") {
-                numStack.push(num1+num2);
-            } else if(token === "-") {
-                numStack.push(num1-num2);
-            } else if(token === "*") {
-                numStack.push(num1*num2);
-            } else if(token === "/") {
-                let res = num1/num2;
-                if(res > 0) numStack.push(Math.floor(res));
-                else numStack.push(Math.ceil(res))
-            }
+        } else { // else token is an arithmetic operator
+            const num2 = numStack.pop();
+            const num1 = numStack.pop();
+            numStack.push(validOps[token](num1, num2));
         }
     }
-    
-    //console.log(parseInt("-11"))
     
     return numStack[0];
 };
