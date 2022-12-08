@@ -83,6 +83,7 @@ class Trie{
         }
         // when loop ends we reached the last letter of the prefix
         // we can return true since we found the prefix in the trie (the actual word containing that prefix does not matter)
+        // it also does not matter if the prefix is a word or not
         return true;
     }
 }
