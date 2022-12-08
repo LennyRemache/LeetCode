@@ -4,20 +4,23 @@
  * @return {number}
  */
 
-//
+// DP Tabulation => bottom-up approach for this problem is most optimal
 const coinChange = (coins, amount) => {
-    const table = new Array(amount + 1).fill(Infinity);
-    table[0] = 0;
+    // T: O(c * a) => num of coins * length of table
+    // S: O(a)
+    const table = new Array(amount + 1).fill(Infinity); // tabulation always need an array of size n+1 where n represents the target to reach from 0
     
-    for(let coin of coins) {
-        for(let i = 0; i < table.length; i++) {
-            if (coin <= i) {
-                let idx = i - coin;
-                let potentialAmount = table[idx] + 1;
-                table[i] = Math.min(table[i], potentialAmount)
+    table[0] = 0; // {amount: # of coins}
+    
+    for(let amount = 0; amount < table.length; amount++) {
+        for(let coin of coins) {
+            if (coin <= amount) {
+                table[amount] = Math.min(table[amount], table[amount - coin] + 1)
             }
         }
     }
     
     return table[amount] === Infinity ? -1 : table[amount];
 };
+
+// DP Memoization(cache) => top-down approach is another type of DP
