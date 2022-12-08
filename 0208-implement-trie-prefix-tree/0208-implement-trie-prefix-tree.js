@@ -9,7 +9,7 @@ class TrieNode {
 
 class Trie{
     constructor() {
-        this.node = new TrieNode(); // initialize the root TrieNode of the trie data strcuture
+        this.root = new TrieNode(); // initialize the root TrieNode of the trie data strcuture
     }
 
     /**
@@ -18,7 +18,7 @@ class Trie{
      */
     insert(word) {
         // start at root TrieNode
-        let currNode = this.node;
+        let currNode = this.root;
         // check letter by letter of the word
         for(let i = 0; i < word.length; i++) {
             const letter = word[i];
@@ -43,7 +43,7 @@ class Trie{
      */
     search(word) {
         // start at root TrieNode
-        let currNode = this.node;
+        let currNode = this.root;
         // check letter by letter of the word
         for(let i = 0; i < word.length; i++) {
             const letter = word[i];
@@ -68,7 +68,7 @@ class Trie{
      */
     startsWith(prefix) {
         // start at root TrieNode
-        let currNode = this.node;
+        let currNode = this.root;
         // check letter by letter of the prefix
         for(let i = 0; i < prefix.length; i++) {
             const letter = prefix[i];
