@@ -4,6 +4,9 @@
  * @return {boolean}
  */
 const backspaceCompare = (s, t) => {
+    // T: O(n + m) where n is s.length and m is t.length
+    // T: O(n + m)
+    
     let sStack = [];
     let tStack = [];
     
