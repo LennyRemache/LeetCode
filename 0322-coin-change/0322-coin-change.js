@@ -24,7 +24,7 @@ const coinChange = (coins, target) => {
             if (amount - coin >= 0) {
                 // set the # of coins for current amount value
                 // to the min between what is already stored at current amount value 
-                // and the # of coins at amount-currCoin value + 1
+                // and (the # of coins used to get a smaller amount) + 1 (add 1 because its like saying we had to use one more coin to reach curr value)
                 table[amount] = Math.min(table[amount], table[amount - coin] + 1)
             }
         }
