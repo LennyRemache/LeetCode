@@ -11,19 +11,19 @@
  * @return {boolean}
  */
 const isValidBST = (root) => {
-    const dfs = (node, left, right) => {
+    const dfs = (node, min, max) => {
         if (!node) return true; // a null node is a valid BST 
         
         //console.log(`${left} < ${node.val} < ${right}`);
         // if node.val is not within the valid range of values then it is not valid bst
-        if (!(left < node.val && node.val < right)) {
+        if (!(min < node.val && node.val < max)) {
             return false;
         }
         
-        // having left and right ranges prevent subtree nodes from going beyond valid ranges
-        // that take into account previous node values and its ranges as well
+        // having min and max ranges prevent subtree nodes from going beyond valid ranges
+        // that take into account its root node value and its ranges as well
         
-        return dfs(node.left, left, node.val) && dfs(node.right, node.val, right);
+        return dfs(node.left, min, node.val) && dfs(node.right, node.val, max);
     }
     
     return dfs(root, -Infinity, Infinity)
