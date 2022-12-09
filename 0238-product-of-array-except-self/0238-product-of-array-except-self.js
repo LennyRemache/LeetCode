@@ -8,9 +8,10 @@ const productExceptSelf = (nums) => {
     
     let sums = new Array(nums.length).fill(1); // sums[i] that will store the products of all elements of nums except nums[i]
     
-    sums[0] = nums[0];
-    
     // calculate all left side products
+    sums[0] = nums[0]; // handles first element not having anything to its left 
+                       // so first element in sums is simply just itself for its left side product
+    
     // start at index 1 since nums[0] has no numbers to its left which causes out of bounds error
     for(let i = 1; i < nums.length; i++) {
         sums[i] = sums[i-1] * nums[i];
