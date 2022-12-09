@@ -1,13 +1,18 @@
 
 class MinStack {
     constructor() {
-        this.minimum = [Infinity];
+        this.minimum = [];
         this.stack = [];
     }
     
     push(val) {
+        if (this.stack.length === 0) {
+            this.minimum.push(val);
+        } else {
+            // keeps track of the respective minimum at each state of the stack
+            this.minimum.push(Math.min(this.minimum[this.minimum.length-1], val));
+        }
         this.stack.push(val);
-        this.minimum.push(Math.min(this.minimum[this.minimum.length-1], val));
     }
     
     pop() {
