@@ -6,7 +6,9 @@ const productExceptSelf = (nums) => {
     // T: O(n)
     // S: O(1)
     
-    let sums = new Array(nums.length).fill(nums[0]); // sums[i] that will store the products of all elements of nums except nums[i]
+    let sums = new Array(nums.length).fill(1); // sums[i] that will store the products of all elements of nums except nums[i]
+    
+    sums[0] = nums[0];
     
     // calculate all left side products
     // start at index 1 since nums[0] has no numbers to its left which causes out of bounds error
