@@ -13,7 +13,8 @@
 const isValidBST = (root) => {
     const dfs = (node, left, right) => {
         if (!node) return true; // a null node is a valid BST 
-        console.log(`${left} < ${node.val} < ${right}`);
+        
+        //console.log(`${left} < ${node.val} < ${right}`);
         // if node.val is not within the valid range of values then it is not valid bst
         if (!(left < node.val && node.val < right)) {
             return false;
