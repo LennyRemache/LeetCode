@@ -18,8 +18,8 @@ const productExceptSelf = (nums) => {
     }
     
     let cacheRightProduct = nums[nums.length - 1]; // saves the continous product of multiplying each number in nums from right to left one by one.
-                                                   // better than using an array that stores each right side product which takes O(n)
-                                                   // ex : 4  ->  3*4  ->  2*3*4  ->  1*2*3*4
+                                                   // better than using an array that stores each final right side product which takes O(n)
+                                                   // ex : 4  ->  3*4  ->  2*3*4  ->  1*2*3*4 instead of [24,24,12,4]
     
     sums[nums.length-1] = sums[nums.length-2]      // handles last element not having anything to its right 
                                                    // so last element in sums is simply just the left elems product stored to its left
