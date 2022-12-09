@@ -3,8 +3,8 @@
  * @return {number[]}
  */
 const productExceptSelf = (nums) => {
-    // T: O(n)
-    // S: O(1)
+    // T: O(n) -> each loop iterates relative to length of nums
+    // S: O(1) -> excluding result array being returned since we dont create additional data structures
     
     let sums = new Array(nums.length).fill(1); // sums[i] that will store the products of all elements of nums except nums[i]
     
