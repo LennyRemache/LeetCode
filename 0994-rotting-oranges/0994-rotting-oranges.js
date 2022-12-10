@@ -3,8 +3,9 @@
  * @return {number}
  */
 const orangesRotting = (grid) => {
-    // T: O(n*m) since we are traversing the grid
-    // S: O(n*m) since we are also using a queue which worse case could 
+    // T: O(n*m) since we are traversing cell in the grid at most 1 time
+    // S: O(n*m) since we are also using a queue which worse case is when the enitre grid 
+              // is filled with rotten oranges so queue would be n*m
     let queue = [];
     let numFresh = 0;
     
