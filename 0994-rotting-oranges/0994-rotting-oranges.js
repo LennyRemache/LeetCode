@@ -12,7 +12,7 @@ const orangesRotting = (grid) => {
         for(let j = 0; j < grid[0].length; j++) {
             // if cell is a starting rotten orange
             if (grid[i][j] === 2) {
-                queue.push([i,j]);
+                queue.push([i,j]); // store the coordinates of the starting rotted oranges
             } else if (grid[i][j] === 1) { // keep track of total fresh oranges in order to check in the end 
                                            // if all fresh oranges were rotted
                 numFresh += 1;
@@ -20,6 +20,7 @@ const orangesRotting = (grid) => {
         }
     }
     
+    // BFS
     const dir = [[-1,0],[1,0],[0,-1],[0,1]];
     // Start to rot the oranges and keep track of time passed
     let time = 0;
