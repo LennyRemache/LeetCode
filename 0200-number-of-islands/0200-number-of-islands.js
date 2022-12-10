@@ -9,11 +9,11 @@ const numIslands = (grid) => {
     let visited = new Set();
     
     const bfs = (row, col) => {  
-        let queue = [];
-        queue.push([row,col]);
+        let stack = [];
+        stack.push([row,col]);
         
-        while (queue.length > 0) {
-            let cell = queue.shift();
+        while (stack.length > 0) {
+            let cell = stack.pop();
             let [r, c] = cell;
             
             const dir = [[-1,0], [1,0], [0,-1], [0,1]];
@@ -25,7 +25,7 @@ const numIslands = (grid) => {
                 if (0 <= newRow && newRow < grid.length && 0 <= newCol && newCol < grid[0].length) {
                     if (grid[newRow][newCol] === "1" && !visited.has(`${newRow},${newCol}`)) {
                         visited.add(`${newRow},${newCol}`);
-                        queue.push([newRow, newCol]);
+                        stack.push([newRow, newCol]);
                     }
                 }
             })
