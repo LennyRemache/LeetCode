@@ -9,9 +9,11 @@ const numIslands = (grid) => {
     let visited = new Set();
     
     const dfs = (row, col) => {  
-        let stack = [];
-        stack.push([row,col]);
+        // search the rest of the island
+        let stack = []; // stores cells part of the current island that need to be searched as well
+        stack.push([row,col]); // pushing the cell that the island starts with
         
+        // while all cells in the current island are not searched
         while (stack.length > 0) {
             let cell = stack.pop();
             let [r, c] = cell;
