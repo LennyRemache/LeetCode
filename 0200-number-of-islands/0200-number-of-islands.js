@@ -8,7 +8,7 @@ const numIslands = (grid) => {
     let islands = 0;
     let visited = new Set();
     
-    const bfs = (row, col) => {  
+    const dfs = (row, col) => {  
         let stack = [];
         stack.push([row,col]);
         
@@ -39,7 +39,7 @@ const numIslands = (grid) => {
             if (!visited.has(`${i},${j}`) && grid[i][j] === "1") {
                 visited.add(`${i},${j}`); // add the start of the island to visited
                 //console.log(visited)
-                bfs(i,j); // explore the entire island starting at curr cell while keeping track of cells that are part of that island
+                dfs(i,j); // explore the entire island starting at curr cell while keeping track of cells that are part of that island
                 islands += 1;
             } 
             // else curr cell is water or is already a part of an island we visited before
