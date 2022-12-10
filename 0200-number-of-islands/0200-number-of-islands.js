@@ -8,12 +8,12 @@ const numIslands = (grid) => {
     let islands = 0;
     let visited = new Set();
     
-    const dfs = (row, col) => {  
-        let stack = [];
-        stack.push([row,col]);
+    const bfs = (row, col) => {  
+        let queue = [];
+        queue.push([row,col]);
         
-        while (stack.length > 0) {
-            let cell = stack.pop();
+        while (queue.length > 0) {
+            let cell = queue.shift();
             let [r, c] = cell;
             
             const dir = [[-1,0], [1,0], [0,-1], [0,1]];
@@ -25,7 +25,7 @@ const numIslands = (grid) => {
                 if (0 <= newRow && newRow < grid.length && 0 <= newCol && newCol < grid[0].length) {
                     if (grid[newRow][newCol] === "1" && !visited.has(`${newRow},${newCol}`)) {
                         visited.add(`${newRow},${newCol}`);
-                        stack.push([newRow, newCol]);
+                        queue.push([newRow, newCol]);
                     }
                 }
             })
@@ -39,7 +39,7 @@ const numIslands = (grid) => {
             if (!visited.has(`${i},${j}`) && grid[i][j] === "1") {
                 visited.add(`${i},${j}`); // add the start of the island to visited
                 //console.log(visited)
-                dfs(i,j); // explore the entire island starting at curr cell while keeping track of cells that are part of that island
+                bfs(i,j); // explore the entire island starting at curr cell while keeping track of cells that are part of that island
                 islands += 1;
             } 
             // else curr cell is water or is already a part of an island we visited before
