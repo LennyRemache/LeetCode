@@ -18,7 +18,7 @@ const numIslands = (grid) => {
             
             const dir = [[-1,0], [1,0], [0,-1], [0,1]];
             
-            for(let d of dir) {
+            dir.forEach((d) => {
                 const newRow = r + d[0];
                 const newCol = c + d[1];
                 
@@ -28,7 +28,7 @@ const numIslands = (grid) => {
                         stack.push([newRow, newCol]);
                     }
                 }
-            }
+            })
         }
     }
     
