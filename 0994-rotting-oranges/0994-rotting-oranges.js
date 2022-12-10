@@ -24,7 +24,7 @@ const orangesRotting = (grid) => {
     const dir = [[-1,0],[1,0],[0,-1],[0,1]];
     // Start to rot the oranges and keep track of time passed
     let time = 0;
-    while (queue.length > 0) {
+    while (queue.length > 0 && numFresh > 0) {
         let qLen = queue.length;
         for(let k = 0; k < qLen; k++) {
             let [r, c] = queue.shift();
@@ -32,15 +32,16 @@ const orangesRotting = (grid) => {
             dir.forEach((d) => {
                 const newRow = r + d[0];
                 const newCol = c + d[1];
-
+                
+                // in bounds and fresh orange
                 if (0 <= newRow && newRow < grid.length && 0 <= newCol && newCol < grid[0].length && grid[newRow][newCol] === 1) {
                     queue.push([newRow, newCol]);
-                    grid[newRow][newCol] = -1; // marking the orange as being rot by another rotten orange
+                    grid[newRow][newCol] = 2; // marking the orange as being rotten
                     numFresh -= 1;
                 }
             })
         }
-        if(queue.length > 0) time += 1;
+        time += 1;
     }
         
     return numFresh > 0 ? -1 : time ;        
