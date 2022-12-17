@@ -11,13 +11,18 @@ const search = (nums, target) => {
         const mid = Math.floor((start+end)/2);
         if (nums[mid] === target) return mid;
         
+        // is left array sorted from start to mid
         else if (nums[start] <= nums[mid]) {
+            // is target in range of left sorted array from start to mid
             if (nums[start] <= target && target < nums[mid]) {
                 end = mid-1;
             } else {
                 start = mid + 1;
             }
-        } else {
+        } 
+        // else right array sorted from mid to end
+        else if (nums[start] >= nums[mid]) {
+            // is target in range of right sorted array from mid to end
             if (nums[end] >= target && target > nums[mid]) {
                 start = mid + 1;
             } else {
