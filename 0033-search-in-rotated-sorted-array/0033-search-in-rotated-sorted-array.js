@@ -19,7 +19,7 @@ const search = (nums, target) => {
             // is target in range of left sorted array from start to mid
             if (nums[start] <= target && target < nums[mid]) {
                 end = mid-1;
-            } else {
+            } else { // if not in range then we move on to the right leftover array
                 start = mid + 1;
             }
         } 
@@ -28,7 +28,7 @@ const search = (nums, target) => {
             // is target in range of right sorted array from mid to end
             if (nums[end] >= target && target > nums[mid]) {
                 start = mid + 1;
-            } else {
+            } else { // if not in range then we move on to the left leftover array
                 end = mid - 1;
             }
         }
