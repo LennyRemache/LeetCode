@@ -21,7 +21,7 @@ const search = (nums, target) => {
             }
         } 
         // else right array sorted from mid to end
-        else if (nums[start] >= nums[mid]) {
+        else {
             // is target in range of right sorted array from mid to end
             if (nums[end] >= target && target > nums[mid]) {
                 start = mid + 1;
