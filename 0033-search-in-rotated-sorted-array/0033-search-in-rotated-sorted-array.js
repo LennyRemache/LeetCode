@@ -4,6 +4,9 @@
  * @return {number}
  */
 const search = (nums, target) => {
+    // T: O(log(n))
+    // S: O(1)
+    
     let start = 0;
     let end = nums.length - 1;
     
