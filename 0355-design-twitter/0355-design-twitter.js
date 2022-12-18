@@ -29,7 +29,7 @@ class Twitter {
         
         allTweets.sort((a,b) => b[1] - a[1]);
         
-        return allTweets.slice(0,10).map(tweet => tweet[0]);
+        return allTweets.slice(0,10).map(tweet => {return tweet[0]});
     }
     
     follow(followerId, followeeId) {
