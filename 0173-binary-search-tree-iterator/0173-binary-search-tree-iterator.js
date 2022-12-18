@@ -13,6 +13,9 @@
 class BSTIterator {
     constructor(root) {
         this.stack = [];
+        // iterative DFS using a stack
+        // travel as far left as possible
+        // last node in stack is the first node to be visited inorderly
         while(root) {
             this.stack.push(root);
             root = root.left;
@@ -27,6 +30,7 @@ class BSTIterator {
     next() {
         let res = this.stack.pop();
         let cur = res.right;
+        // iterative DFS using a stack
         while(cur) {
             this.stack.push(cur);
             cur = cur.left;
