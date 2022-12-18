@@ -26,7 +26,7 @@ class WordDictionary {
         
         const dfs = (j, root) => {
             let node = root;
-        
+            
             for(let i = j; i < word.length; i++) {
                 let letter = word[i];
                 if (letter === ".") {
@@ -40,7 +40,6 @@ class WordDictionary {
                     }
                     node = node.children[letter];    
                 } 
-                
             }   
             
             return node.endOfWord;
