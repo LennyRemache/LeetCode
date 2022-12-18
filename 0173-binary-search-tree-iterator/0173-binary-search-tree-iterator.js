@@ -21,7 +21,7 @@ class BSTIterator {
     }
     
     hasNext() {
-        return this.stack.length > 0;
+        return this.stack.length;
     }
     
     next() {
