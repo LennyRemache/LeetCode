@@ -34,14 +34,11 @@ class WordDictionary {
                         if (dfs(i+1, node.children[child])) return true;
                     }
                     return false;
-                } else {
-                    if (node.children[letter] === undefined) {
+                } else if (node.children[letter] === undefined) {
                         return false;
-                    }
-                    node = node.children[letter];    
-                } 
+                }
+                node = node.children[letter];    
             }   
-            
             return node.endOfWord;
         }
         
