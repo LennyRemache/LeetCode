@@ -30,9 +30,8 @@ class WordDictionary {
             for(let i = j; i < word.length; i++) {
                 let letter = word[i];
                 if (letter === ".") {
-                    for (let child of Object.values(node.children)) {
-                        //console.log(child)
-                        if (dfs(i+1, child)) return true;
+                    for (let child in node.children) {
+                        if (dfs(i+1, node.children[child])) return true;
                     }
                     return false;
                 } else {
