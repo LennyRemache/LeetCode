@@ -36,8 +36,8 @@ LRUCache.prototype.put = function(key, value) {
     // exists in the cache.
     if (this.get(key) === -1 && this.cache.size === this.size) {
         // .keys() is an iterable object of keys
-        for(let k of this.cache.keys()) { // delete LRU key
-            this.cache.delete(k);
+        for(let keyVal of this.cache) { // delete LRU key
+            this.cache.delete(keyVal[0]);
             break;
         }
     } 
