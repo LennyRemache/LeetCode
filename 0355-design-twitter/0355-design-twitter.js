@@ -1,7 +1,14 @@
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+
 class Twitter {
     constructor() {
         this.userTweets = {};
-        this.userNewsFeed = {};
         this.userFollowees = {};
         this.time = 0;
     }
@@ -15,8 +22,11 @@ class Twitter {
     getNewsFeed(userId) {
         let allTweets = this.userTweets[userId] === undefined ? [] : [...this.userTweets[userId]];
         //console.log(this.userFollowees[userId])
+        
+        // if current user follows anyone
         if (this.userFollowees[userId] !== undefined) {
             this.userFollowees[userId].forEach(followeeId => {
+                // if followees has tweets
                 if (this.userTweets[followeeId] !== undefined) {
                     for(let tweet of this.userTweets[followeeId]) {
                         allTweets.push(tweet);
