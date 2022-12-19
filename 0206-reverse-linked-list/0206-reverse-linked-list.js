@@ -10,6 +10,8 @@
  * @return {ListNode}
  */
 const reverseList = (head) => {
+    // T: O(n)  S: O(1);
+    
     let prevNode = null;
     let currNode = head;
     let nextNode = null;
