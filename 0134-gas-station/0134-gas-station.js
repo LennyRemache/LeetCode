@@ -12,12 +12,13 @@ var canCompleteCircuit = function(gas, cost) {
         tank += gas[i];
         tank -= cost[i];
         loopTank += gas[i] - cost[i];
+        
         if (tank < 0) { // not enough gas to get to next station
-            tank = 0;
-            start = i + 1;
+            tank = 0; // reset tank to 0 to signal starting at different station
+            start = i + 1; // new start position
         }
+        
         i++;
     }
-    console.log(loopTank)
     return loopTank >= 0 ? start : -1;
 };
