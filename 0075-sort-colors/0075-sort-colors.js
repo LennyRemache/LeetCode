@@ -6,6 +6,7 @@ const sortColors = (nums) => {
     // T: O(n) where n is length of nums
     // S: O(1) since numCount will only have 0,1,2 as possible keys
     
+    // similar to bucket sorting
     let numCount = {
         0: 0, 
         1: 0,
