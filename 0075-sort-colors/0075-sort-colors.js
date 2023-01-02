@@ -3,6 +3,8 @@
  * @return {void} Do not return anything, modify nums in-place instead.
  */
 const sortColors = (nums) => {
+    // T: O(n) where n is length of nums
+    // S: O(1) since numCount will only have 0,1,2 as possible keys
     
     let numCount = {
         0: 0, 
@@ -10,13 +12,13 @@ const sortColors = (nums) => {
         2: 0
     };
     
-    for(let num of nums) {
+    for(let num of nums) { // O(n)
         numCount[num] += 1;
     }
     
     let i = 0;
     let color = 0;
-    while (i < nums.length) {
+    while (i < nums.length) { // O(n)
         if (numCount[color] === 0) {
             color += 1;
             continue;
