@@ -10,6 +10,7 @@ const sortColors = (nums) => {
     let left = 0;
     let right = nums.length - 1;
     
+    // one pass solution
     while (i <= right) {
         if (nums[i] === 0) {
             nums[i] = nums[left];
