@@ -5,19 +5,23 @@
  */
 
 const wordBreak = (s, wordDict) => {
+    // T: O(n*m)
+    // S: O(n)
     let dp = new Array(s.length + 1).fill(false);
     
-    dp[s.length] = true; // base case is out of bounds index
+    dp[0] = true; // base case
     
-    for(let i = s.length-1; i >= 0; i--) {
-        for(let word of wordDict) {
-            if ( (i + word.length <= s.length) && (s.slice(i, i + word.length) === word) ) {
-                dp[i] = dp[i + word.length];
+    for(let i = 0; i < dp.length; i++) {
+        if (dp[i] === false) {
+            continue;
+        }
+        
+        for(let j = i + 1; j < dp.length; j++) {
+            if (wordDict.includes(s.slice(i, j))) {
+                dp[j] = true;
             }
-            if (dp[i] === true) {
-                break;
-            }
+            
         }
     }
-    return dp[0];
+    return dp[dp.length-1];
 }
