@@ -5,55 +5,42 @@
 const spiralOrder = (matrix) => {
     let res = [];
     
-    let dir = [[0,-1],[0,1],[-1,0],[1,0]]; // left, right, up, down
+    let leftBound = 0;
+    let rightBound = matrix[0].length;
+    let topBound = 0;
+    let bottomBound = matrix.length;
+    
     let row = 0;
     let col = 0;
-    
-    let type = "right";
- 
-    while (res.length !== matrix.length*matrix[0].length) {
-        
-        if(matrix[row][col] !== 303) {
-            //console.log(matrix[row][col]);
-            res.push(matrix[row][col]);
-            matrix[row][col] = 303; //signal visited as error 303
-        }
-        
+   
+    while (leftBound < rightBound && topBound < bottomBound) {
         // test right first
-        if (type === "right" && col + dir[1][1] < matrix[0].length && matrix[row][col + dir[1][1]] !== 303) {
-            col = col + dir[1][1];
-            continue;
+        for(let i = leftBound; i < rightBound; i++) {
+           res.push(matrix[topBound][i]);
         } 
-        
+        topBound += 1;
+
         // test down second
-        else if (type === "down" && row + dir[3][0] < matrix.length && matrix[row + dir[3][0]][col] !== 303) {
-            row = row + dir[3][0];
-            continue;
+        for(let i = topBound; i < bottomBound; i++) {
+            res.push(matrix[i][rightBound - 1]);
         }
+        rightBound -= 1;
         
+        if(!(leftBound < rightBound && topBound < bottomBound)) {
+            break;
+        }
+
         // test left third
-        else if (type === "left" && col + dir[0][1] >= 0 && matrix[row][col + dir[0][1]] !== 303) {
-            col = col + dir[0][1]  
-            continue;
-        } 
+        for(let i = rightBound - 1; i >= leftBound; i--) {
+            res.push(matrix[bottomBound - 1][i]);
+        }
+        bottomBound -= 1;
+
         // test up last
-        else if (type === "up" && row + dir[2][0] >= 0 && matrix[row + dir[2][0]][col] !== 303) {
-            row = row + dir[2][0];
-            continue;
+        for(let i = bottomBound - 1; i >= topBound; i--) {
+            res.push(matrix[i][leftBound]);
         }
-        
-        if (type === "right") {
-            type = "down";
-      
-        } else if (type === "down") {
-            type = "left";
-      
-        } else if (type === "left") {
-            type = "up";
-       
-        } else {
-            type = "right";
-        }
+        leftBound += 1;
     }
     
     return res;
