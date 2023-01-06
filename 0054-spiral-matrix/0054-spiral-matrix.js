@@ -19,31 +19,26 @@ const spiralOrder = (matrix) => {
             matrix[row][col] = 303; //signal visited as error 303
         }
         
-        
         // test right first
         if (type === "right" && col + dir[1][1] < matrix[0].length && matrix[row][col + dir[1][1]] !== 303) {
             col = col + dir[1][1];
-            type = "right";
             continue;
         } 
         
         // test down second
         else if (type === "down" && row + dir[3][0] < matrix.length && matrix[row + dir[3][0]][col] !== 303) {
             row = row + dir[3][0];
-            type = "down";
             continue;
         }
         
         // test left third
         else if (type === "left" && col + dir[0][1] >= 0 && matrix[row][col + dir[0][1]] !== 303) {
             col = col + dir[0][1]  
-            type = "left";
             continue;
         } 
         // test up last
         else if (type === "up" && row + dir[2][0] >= 0 && matrix[row + dir[2][0]][col] !== 303) {
             row = row + dir[2][0];
-            type = "up";
             continue;
         }
         
