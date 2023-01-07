@@ -9,10 +9,7 @@ const spiralOrder = (matrix) => {
     let rightBound = matrix[0].length;
     let topBound = 0;
     let bottomBound = matrix.length;
-    
-    let row = 0;
-    let col = 0;
-   
+
     while (leftBound < rightBound && topBound < bottomBound) {
         // test right first
         for(let i = leftBound; i < rightBound; i++) {
