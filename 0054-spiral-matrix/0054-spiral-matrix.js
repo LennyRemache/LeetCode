@@ -26,7 +26,7 @@ const spiralOrder = (matrix) => {
         }
         rightBound -= 1;
         
-        if(!(leftBound < rightBound && topBound < bottomBound)) {
+        if(leftBound >= rightBound || topBound >= bottomBound) {
             break;
         }
 
