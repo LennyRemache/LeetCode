@@ -4,6 +4,8 @@
  * @return {boolean}
  */
 const exist = (board, word) => {
+    // O(n * m * dfs) where dfs is 4^n
+    
     let ROWS = board.length;
     let COLS = board[0].length;
     
