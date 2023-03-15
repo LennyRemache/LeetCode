@@ -17,6 +17,7 @@ const hasCycle = (head) => {
     while (fastPointer && fastPointer.next) {
         slowPointer = slowPointer.next;
         fastPointer = fastPointer.next.next;
+        
         if (slowPointer === fastPointer) return true;
     }
     
