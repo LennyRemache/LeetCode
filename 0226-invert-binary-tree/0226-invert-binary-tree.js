@@ -11,15 +11,14 @@
  * @return {TreeNode}
  */
 const invertTree = (root) => {
-    // T: O(n)  S: O(1) or O(n) if taking into account stack frames/calls in rucursion
     
-    if(root) {
-        const left = invertTree(root.left);
-        const right = invertTree(root.right);
-        
-        root.left = right;
-        root.right = left;
-    }
+    if (!root) return root;
+    
+    let left = invertTree(root.left);
+    let right = invertTree(root.right);
+    
+    root.left = right;
+    root.right = left;
     
     return root;
 };
