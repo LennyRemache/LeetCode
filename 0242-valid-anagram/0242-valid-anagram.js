@@ -4,22 +4,18 @@
  * @return {boolean}
  */
 const isAnagram = (s, t) => {
-    // T: O(2n + m) -> O(n+m)  S: O(n)
+    if(s.length !== t.length) return false;
     
-    let letterFreq = {};
+    let count = {};
     
-    for (let letter of s) {
-        if (letterFreq[letter] === undefined) letterFreq[letter] = 1;
-        else letterFreq[letter] += 1;
+    for(let letter of s) {
+        if (count[letter] === undefined) count[letter] = 0;
+        count[letter] += 1;
     }
     
     for (let letter of t) {
-        if (letterFreq[letter] === undefined) return false;
-        letterFreq[letter] -= 1;
-    }
-    
-    for (let letter in letterFreq) {
-        if (letterFreq[letter] !== 0) return false;
+        if (count[letter] === undefined || count[letter] === 0) return false;
+        count[letter] -= 1;
     }
     
     return true;
