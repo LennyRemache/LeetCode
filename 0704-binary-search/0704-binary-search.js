@@ -3,6 +3,10 @@
  * @param {number} target
  * @return {number}
  */
+// T: O(log(n)) since we continously split the array in half and dont search through every element in nums
+// S: O(1) since we do not create any additional data structure. We just search in place
+
+
 const search = (nums, target) => {
     // pointers to help find the mid point of the array
     let left = 0;
