@@ -6,11 +6,13 @@
  * @return {number[][]}
  */
 const floodFill = (image, sr, sc, color) => {
-    let startColor = image[sr][sc];
     
+    if (image[sr][sc] === color) return image;
+    
+    let startColor = image[sr][sc];
     const dfs = (r, c) => {
         // conditions to check out of bound errors and if not out of bounds then check it matches the startColor
-        if (r < 0 || r > image.length - 1 || c < 0 || c > image[0].length - 1 || image[r][c] !== startColor || image[r][c] === color) return;
+        if (r < 0 || r > image.length - 1 || c < 0 || c > image[0].length - 1 || image[r][c] !== startColor) return;
         
         image[r][c] = color;
         
