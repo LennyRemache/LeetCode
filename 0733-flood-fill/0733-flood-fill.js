@@ -8,19 +8,20 @@
 const floodFill = (image, sr, sc, color) => {
     let startColor = image[sr][sc];
     
-    const fill = (row, col) => {
-        if (row < 0 || row >= image.length || col < 0 || col >= image[0].length || image[row][col] !== startColor || image[row][col] === color) return;
+    const dfs = (r, c) => {
+        // conditions to check out of bound errors and if not out of bounds then check it matches the startColor
+        if (r < 0 || r > image.length - 1 || c < 0 || c > image[0].length - 1 || image[r][c] !== startColor || image[r][c] === color) return;
         
-        image[row][col] = color;
+        image[r][c] = color;
         
-        fill(row+1, col); // up
-        fill(row-1,col);  // down
-        fill(row, col+1); // right
-        fill(row, col-1); // left
-
+        dfs(r-1, c);
+        dfs(r+1, c);
+        dfs(r, c-1);
+        dfs(r, c+1);
+        
+        return;
     }
-    
-    fill(sr,sc);
+    dfs(sr, sc);
     
     return image;
 };
