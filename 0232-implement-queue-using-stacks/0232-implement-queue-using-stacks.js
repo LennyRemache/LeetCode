@@ -1,38 +1,36 @@
-
 class MyQueue {
     constructor() {
         this.pushStack = [];
         this.popStack = [];
     }
     
-    push(elem) {
-        this.pushStack.push(elem);
-    }
-    
-    peek() {
-        if (this.popStack.length === 0) {
-            while (this.pushStack.length > 0) {
-                this.popStack.push(this.pushStack.pop());
-            }
-        }
-        
-        return this.popStack[this.popStack.length-1];
+    push(val) {
+        this.pushStack.push(val);
     }
     
     pop() {
-        if (this.popStack.length === 0) {
-            while (this.pushStack.length > 0) {
-                this.popStack.push(this.pushStack.pop());
+        if (!this.popStack.length) {
+            while (this.pushStack.length) {
+                this.popStack.push(this.pushStack.pop())
             }
         }
-        
         return this.popStack.pop();
     }
     
+    peek() {
+        if (!this.popStack.length) {
+            while (this.pushStack.length) {
+                this.popStack.push(this.pushStack.pop())
+            }
+        }
+        return this.popStack[this.popStack.length - 1];
+    }
+    
     empty() {
-        return this.pushStack.length === 0 && this.popStack.length === 0
+        return !this.pushStack.length && !this.popStack.length
     }
 }
+
 /** 
  * Your MyQueue object will be instantiated and called as such:
  * var obj = new MyQueue()
