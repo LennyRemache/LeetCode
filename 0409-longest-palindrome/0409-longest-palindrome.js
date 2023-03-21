@@ -2,24 +2,29 @@
  * @param {string} s
  * @return {number}
  */
-const longestPalindrome = (s) => {
-    let freq = {};
+var longestPalindrome = function(s) {
+    let count = {};
     
-    for (let letter of s) {
-        if (freq[letter] === undefined) freq[letter] = 1;
-        else freq[letter] += 1;
+    for(let letter of s) {
+        if (count[letter] === undefined) {
+            count[letter] = 0;
+        }
+        count[letter] += 1;
     }
     
-    let res = 0;
+    let length = 0;
     let odd = false;
-    for (let letter in freq) {
-        if (freq[letter] % 2 === 0) {
-            res += freq[letter];
+    
+    for(let letter in count) {
+        let num = count[letter];
+        
+        if (num % 2 === 0) {
+            length += num;
         } else {
             odd = true;
-            res += freq[letter] - 1;
+            length += num - 1;
         }
     }
     
-    return odd ? res + 1 : res;
+    return odd === true ? length + 1 : length;
 };
