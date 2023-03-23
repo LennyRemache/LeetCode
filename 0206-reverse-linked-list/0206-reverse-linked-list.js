@@ -10,20 +10,17 @@
  * @return {ListNode}
  */
 const reverseList = (head) => {
-    // T: O(n)  S: O(1);
+    let prev = null;
+    let curr = head;
+    let next = null;
     
-    let prevNode = null;
-    let currNode = head;
-    let nextNode = null;
-    
-    while(currNode){
-        // 1. Reversing the linked list connection
-        prevNode = currNode.next; // save the node after for a safe disconnection
-        currNode.next = nextNode; // now we can safely break the connection and assign it the new next node that reverses the linked list here
+    while (curr) {
+        prev = curr.next;
+        curr.next = next;
+        next = curr;
+        curr = prev;
         
-        // 2. Preparing for the next iteration of reversing the linked list
-        nextNode = currNode; // setting up for the next connection that that the node we disconnect from will connect to
-        currNode = prevNode; // getting access back to the prev node we lost connection of which we will reverse its connection next
     }
-    return nextNode;
+    
+    return next;
 };
