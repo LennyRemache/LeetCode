@@ -10,21 +10,22 @@
  * @param {TreeNode} root
  * @return {number}
  */
-const diameterOfBinaryTree = (root) => {
+var diameterOfBinaryTree = function(root) {
+    
     let diameter = 0;
     
-    const getMaxDiameter = (node) => {
-        if (!node) return 0;
+    const dfs = (root) => {
+        if (root === null) return 0;
         
-        let leftHeight = getMaxDiameter(node.left);
-        let rightHeight = getMaxDiameter(node.right);
+        let left = dfs(root.left);
+        let right = dfs(root.right);
         
-        diameter = Math.max(diameter, leftHeight + rightHeight);
+        diameter = Math.max(left + right, diameter)
         
-        return Math.max(leftHeight, rightHeight) + 1;
-        
+        return Math.max(left, right) + 1;
     }
-    getMaxDiameter(root);
     
-    return diameter
+    dfs(root);
+    
+    return diameter;
 };
