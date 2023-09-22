@@ -3,6 +3,9 @@
  * @param {string} t
  * @return {boolean}
  */
+
+// O(n) runtime where n is length of strings
+// O(n) space where hashmap size is based on string size
 const isAnagram = (s, t) => {
     
     // base case mustr check if both strings have the same # of letters to be an anagram
