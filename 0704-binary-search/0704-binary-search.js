@@ -3,30 +3,16 @@
  * @param {number} target
  * @return {number}
  */
-// T: O(log(n)) since we continously split the array in half and dont search through every element in nums
-// S: O(1) since we do not create any additional data structure. We just search in place
-
-
 const search = (nums, target) => {
-    // pointers to help find the mid point of the array
-    let left = 0;
-    let right = nums.length - 1;
+    let start = 0;
+    let end = nums.length - 1;
     
-    // loop to continously slice the array in half 
-    // since array is sorted it is safe to cut array in halves until we reach the target
-    while (left <= right) {
-        let mid = Math.floor((left + right) / 2); // get the middle index
-        if (nums[mid] === target) return mid; // middle index contains target value
-        
-        if (nums[mid] > target) { // if middle index contains larger value than target then we can ignore everything to the right of it since everything to the right of it would also be greater than the target when sorted
-            right = mid - 1;
-        }
-        else if (nums[mid] < target) {
-            // if middle index contains smaller value than target then we can ignore everything to the left of it since everything to the left of it would also be less than the target when sorted
-            left = mid + 1;
-        }
+    while (start <= end) {
+        let mid = Math.floor((start + end) / 2);
+        if (nums[mid] === target) return mid;
+        else if (nums[mid] < target) start = mid + 1;
+        else if (nums[mid] > target) end = mid - 1;
     }
     
-    // if we reach this point then we never found the target
     return -1;
 };
