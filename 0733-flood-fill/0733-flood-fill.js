@@ -5,6 +5,9 @@
  * @param {number} color
  * @return {number[][]}
  */
+
+// O(n) runtime since we traverse through each pixel at most once
+// O(1) space since we modify the image in place
 const floodFill = (image, sr, sc, color) => {
     const startColor = image[sr][sc];
     
