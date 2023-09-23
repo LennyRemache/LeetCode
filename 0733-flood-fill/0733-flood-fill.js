@@ -6,8 +6,8 @@
  * @return {number[][]}
  */
 
-// O(n) runtime since we traverse through each pixel at most once
-// O(1) space since we modify the image in place
+// O(n*m) runtime since the amount of traversals is based on grid size
+// O(n+m) for the recursive call stack
 const floodFill = (image, sr, sc, color) => {
     const startColor = image[sr][sc];
     
