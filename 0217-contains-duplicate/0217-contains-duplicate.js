@@ -2,10 +2,12 @@
  * @param {number[]} nums
  * @return {boolean}
  */
+
 // O(n) runtime where n is the size of nums
 // O(n) space worse case where all num of nums are unique and hashmap equals size of nums
+
 const containsDuplicate = (nums) => {
-    const freq = {}; // track the frequency of each distinct integer
+    const freq = {}; // track the frequency of each integer
     
     for(let num of nums) {
         if (freq[num] === undefined) {
