@@ -11,12 +11,10 @@ const containsDuplicate = (nums) => {
     
     for(let num of nums) {
         if (freq[num] === undefined) {
-            freq[num] = 0; // first time an integer appears we define its value in the hash map
+            freq[num] = 1; // first time an integer appears we define its value in the hash map
+        } else {
+            return true; // if already defined in hashmap then it contains duplicate meaning 2 or more
         }
-        freq[num] += 1; // add 1 to the frequency of curr num
-        
-        if (freq[num] >= 2) return true; // if frequency of curr num is 2 or more then it contains duplicate
     }
-    
     return false; // no duplicate found if loop ends
 };
