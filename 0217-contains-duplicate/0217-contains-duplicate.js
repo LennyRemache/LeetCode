@@ -13,7 +13,7 @@ const containsDuplicate = (nums) => {
         if (freq[num] === undefined) {
             freq[num] = 1; // first time an integer appears we define its value in the hash map
         } else {
-            return true; // if already defined in hashmap then it contains duplicate meaning 2 or more
+            return true; // if already defined in hashmap then curr num is the duplicate
         }
     }
     return false; // no duplicate found if loop ends
