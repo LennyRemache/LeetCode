@@ -3,39 +3,21 @@
  * @return {number[]}
  */
 const productExceptSelf = (nums) => {
-    // T: O(n) -> each loop iterates relative to length of nums
-    // S: O(1) -> excluding result array being returned since we dont create additional data structures
     
-    let sums = new Array(nums.length).fill(1); // sums[i] that will store the products of all elements of nums except nums[i]
-    
-    // calculate all left side products
-    sums[0] = nums[0]; // handles first element not having anything to its left 
-                       // so first element in sums is simply just itself for its left side product
-    
-    // start at index 1 since nums[0] has no numbers to its left which causes out of bounds error
+    const prefix = new Array(nums.length).fill(1);
     for(let i = 1; i < nums.length; i++) {
-        sums[i] = sums[i-1] * nums[i];
+        prefix[i] = prefix[i-1] * nums[i-1];
+    }
+    console.log(prefix)
+    const postfix = new Array(nums.length).fill(1);
+    for(let i = nums.length - 2; i >= 0; i--) {
+        postfix[i] = nums[i+1] * postfix[i+1];
+    }
+    console.log(postfix)
+    const res = new Array(nums.length).fill(1);
+    for(let i = 0; i < res.length; i++) {
+        res[i] = prefix[i] * postfix[i];
     }
     
-    let cacheRightProduct = nums[nums.length - 1]; // saves the continous product of multiplying each number in nums from right to left one by one.
-                                                   // better than using an array that stores each final right side product which takes O(n)
-                                                   // ex : 4  ->  3*4  ->  2*3*4  ->  1*2*3*4 instead of [24,24,12,4]
-    
-    sums[nums.length-1] = sums[nums.length-2]      // handles last element not having anything to its right 
-                                                   // so last element in sums is simply just the left elems product stored to its left
-                                                   // before it gets modified in the loop to represent the right side products
-    
-    // which is why we also start at nums.length - 2 since sums[nums.length - 1] is already handled
-    // calculate final results for sums array
-    for(let j = nums.length - 2; j > 0; j--) {
-        // leftProduct * rightProduct
-        sums[j] = sums[j-1] * cacheRightProduct;
-        // modify right product for next iteration
-        cacheRightProduct *= nums[j];
-    }
-    
-    // sums[0] has no left side product so it is simply the final cached right side product ex : 2*3*4
-    sums[0] = cacheRightProduct;
-    
-    return sums;
+    return res;
 };
