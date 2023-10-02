@@ -7,20 +7,17 @@
 const isAnagram = (s, t) => {
     if (s.length !== t.length) return false;
     
-    const letterFreq = {};
+    const letterFreq = new Array(26).fill(0); // O(1) space since it will always be of length 26 for all 26 lowercase letters
     
-    for(const letter of s) {
-        if (letterFreq[letter] === undefined) {
-            letterFreq[letter] = 0;
-        }
-        letterFreq[letter] += 1;
+    for(let i = 0; i < s.length; i++) {
+        const indexS = s[i].charCodeAt(0) - 97;
+        const indexT = t[i].charCodeAt(0) - 97;
+        letterFreq[indexS] += 1;
+        letterFreq[indexT] -= 1;
     }
-   
-    for(const letter of t) {
-        if(letterFreq[letter] === undefined || letterFreq[letter] === 0) {
-            return false;
-        }
-        letterFreq[letter] -= 1;
+    
+    for(let i = 0; i < letterFreq.length; i++) {
+        if (letterFreq[i] !== 0) return false;
     }
     
     return true;
