@@ -13,7 +13,7 @@ const isValidSudoku = (board) => {
                 } else {
                     return false;
                 }
-                console.log(digits);
+                //console.log(digits);
             }
             
         }
@@ -29,7 +29,7 @@ const isValidSudoku = (board) => {
                 } else {
                     return false;
                 }
-                console.log(digits);
+                //console.log(digits);
             }
             
         }
@@ -52,7 +52,7 @@ const isValidSudoku = (board) => {
                     } else {
                         return false;
                     }
-                    console.log(digits);
+                    //console.log(digits);
                 }
             }
         }
