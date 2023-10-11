@@ -3,6 +3,7 @@
  * @return {boolean}
  */
 const isValidSudoku = (board) => {
+    
     for (let row = 0; row < board.length; row++) {
         const digits = {};
         for(let col = 0; col < board[0].length; col++) {
@@ -15,7 +16,6 @@ const isValidSudoku = (board) => {
                 }
                 //console.log(digits);
             }
-            
         }
     }
     
@@ -31,7 +31,6 @@ const isValidSudoku = (board) => {
                 }
                 //console.log(digits);
             }
-            
         }
     }
     
