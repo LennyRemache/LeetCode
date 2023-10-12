@@ -12,8 +12,10 @@ class MinStack {
         this.stack.push(val);
         if(this.min.length === 0) {
             this.min.push(val);
+        } else if (val < this.min[this.min.length-1]) {
+            this.min.push(val);
         } else {
-            this.min.push(Math.min(this.min[this.min.length-1], val));
+            this.min.push(this.min[this.min.length-1])
         }
         
     };
