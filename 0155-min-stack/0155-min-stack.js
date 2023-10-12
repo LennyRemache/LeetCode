@@ -2,7 +2,7 @@
 class MinStack {
     constructor() {
         this.stack = [];
-        this.min = [Infinity];
+        this.min = [];
     }
     /** 
      * @param {number} val
@@ -10,7 +10,12 @@ class MinStack {
     */
     push(val) {
         this.stack.push(val);
-        this.min.push(Math.min(this.min[this.min.length-1], val));
+        if(this.min.length === 0) {
+            this.min.push(val);
+        } else {
+            this.min.push(Math.min(this.min[this.min.length-1], val));
+        }
+        
     };
 
     /**
