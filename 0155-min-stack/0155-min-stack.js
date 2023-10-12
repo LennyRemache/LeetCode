@@ -1,39 +1,41 @@
 
-var MinStack = function() {
-    this.stack = [];
-    this.min = [Infinity];
-};
+class MinStack {
+    constructor() {
+        this.stack = [];
+        this.min = [Infinity];
+    }
+    /** 
+     * @param {number} val
+     * @return {void}
+    */
+    push(val) {
+        this.stack.push(val);
+        this.min.push(Math.min(this.min[this.min.length-1], val));
+    };
 
-/** 
- * @param {number} val
- * @return {void}
- */
-MinStack.prototype.push = function(val) {
-    this.stack.push(val)
-    this.min.push(Math.min(val, this.min[this.min.length-1]));
-};
+    /**
+     * @return {void}
+     */
+    pop(){
+        this.stack.pop();
+        this.min.pop();
+    };
 
-/**
- * @return {void}
- */
-MinStack.prototype.pop = function() {
-    this.stack.pop();
-    this.min.pop();
-};
+    /**
+     * @return {number}
+     */
+    top() {
+        return this.stack[this.stack.length - 1];
+    };
 
-/**
- * @return {number}
- */
-MinStack.prototype.top = function() {
-    return this.stack[this.stack.length-1];
-};
+    /**
+     * @return {number}
+     */
+    getMin() {
+        return this.min[this.min.length - 1];
+    };
+}
 
-/**
- * @return {number}
- */
-MinStack.prototype.getMin = function() {
-    return this.min[this.min.length-1];
-};
 
 /** 
  * Your MinStack object will be instantiated and called as such:
