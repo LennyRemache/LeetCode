@@ -7,6 +7,7 @@ const generateParenthesis = (n) => {
     let combination = [];
     let res = [];
     
+    // using a state tree
     const backtrack = (open, close) => {
         // Base Case
         // when theres already n open and n close parenthesis then we have a valid combination
