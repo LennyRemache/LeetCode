@@ -15,14 +15,14 @@ const carFleet = (target, position, speed) => {
     for(let i = cars.length - 1; i >= 0; i--) {
         fleetStack.push(cars[i]); 
         if (fleetStack.length >= 2) { 
-            const currReachTime = fleetStack[fleetStack.length-2][2];
-            const prevReachTime = fleetStack[fleetStack.length-1][2];
-        
-            if (prevReachTime <= currReachTime) {
+            
+            const currReachTime = fleetStack[fleetStack.length-1][2];
+            const prevReachTime = fleetStack[fleetStack.length-2][2];
+            
+            if (currReachTime <= prevReachTime) {
                 fleetStack.pop();
             }
         }
-       
     }
     
     return fleetStack.length;
