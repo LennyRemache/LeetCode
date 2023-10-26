@@ -26,7 +26,6 @@ const largestRectangleArea = (heights) => {
     }
 
     // leftover heights means they could extend all the way to the right, the end
-    console.log(stack)
     for (const [i, h] of stack) {
         const w = heights.length - i;
         maxArea = Math.max(maxArea, h * w);
