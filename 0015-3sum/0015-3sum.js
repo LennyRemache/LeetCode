@@ -29,7 +29,10 @@ const threeSum = (nums) => {
                 while (left < right && nums[left] === nums[left-1]) {
                     left += 1;
                 }
-                
+                // this prevents the case where repeat right pointer values exist, so repeat triplets would occur
+                while (left < right && nums[right] === nums[right+1]) {
+                    right -= 1;
+                }
             } else if (sum < subTarget) { // if the sum of left and right is less than subtarget then we need a larger 
                                           // smallest number so increment left pointer
                 left += 1;
